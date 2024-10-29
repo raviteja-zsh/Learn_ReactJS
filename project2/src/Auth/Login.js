@@ -46,12 +46,15 @@ function Login() {
           password: pword,
         };
         var response = await axios.post(
-          "https://api.softwareschool.co/auth/",
+          "https://api.softwareschool.co/auth/", //cannot use this as giving cors error
+          //have to try something
           loginData
         );
         console.log(response);
-        // setApicall("API Call Successful")
-        localStorage.setItem("id", response.data.id);
+        setApicall(response);
+        localStorage.setItem("id", response.data.id); // to remove we use localStorage.clear
+        // to get item(id) we use localStorage.getItem("id")
+        // to redirect to some page we use window.location = "path"
       } else {
         setApicall("");
       }
